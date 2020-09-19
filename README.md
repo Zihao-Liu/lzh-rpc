@@ -9,7 +9,7 @@
             <img alt="GitHub Workflow Status (branch)" src="https://img.shields.io/github/workflow/status/Zihao-Liu/lzh-rpc/Java%20CI%20with%20Maven/lzh_release_0.0.1"/>
         </a>
         <a href="https://github.com/xuxueli/xxl-rpc/releases">
-            <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Zihao-Liu/lzh-rpc"/>
+            <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/Zihao-Liu/lzh-rpc?include_prereleases">
         </a>
         <a href="https://www.codacy.com/manual/Zihao-Liu/lzh-rpc?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Zihao-Liu/lzh-rpc&amp;utm_campaign=Badge_Grade">
             <img src="https://app.codacy.com/project/badge/Grade/cedd92ec80864e368a2c94e584d694cf"/>
