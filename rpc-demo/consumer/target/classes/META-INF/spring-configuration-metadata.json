@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "lzh.rpc",
+      "type": "com.lzh.rpc.demo.consumer.config.ConsumerConfiguration",
+      "sourceType": "com.lzh.rpc.demo.consumer.config.ConsumerConfiguration"
+    },
+    {
+      "name": "lzh.rpc.consumers",
+      "type": "java.util.List",
+      "sourceType": "com.lzh.rpc.demo.consumer.config.ConsumerConfiguration",
+      "sourceMethod": "getConsumers()"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
