@@ -3,11 +3,18 @@
     <p align="center">
         用来学习RPC实现原理的项目。在实现RPC功能基础上，提供注册中心、权限控制、负载均衡、链路追踪和限流熔断等服务治理功能。
         <br>
-        <a href="https://zihao-liu.github.io/lzh-rpc/"><strong>-- 中文文档 --</strong></a>
+        <a href="https://zihao-liu.github.io/lzh-rpc/"><strong>中文文档</strong></a>
+        <br><br>
+        <a href="https://github.com/Zihao-Liu/lzh-rpc/actions">
+            <img alt="GitHub Workflow Status (branch)" src="https://img.shields.io/github/workflow/status/Zihao-Liu/lzh-rpc/Java%20CI%20with%20Maven/lzh_release_0.0.1"/>
+        </a>
+        <a href="https://github.com/xuxueli/xxl-rpc/releases">
+            <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/Zihao-Liu/lzh-rpc?include_prereleases">
+        </a>
+        <a href="https://www.codacy.com/manual/Zihao-Liu/lzh-rpc?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Zihao-Liu/lzh-rpc&amp;utm_campaign=Badge_Grade">
+            <img src="https://app.codacy.com/project/badge/Grade/cedd92ec80864e368a2c94e584d694cf"/>
+        </a>
     </p> 
-    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Zihao-Liu/lzh-rpc">
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/Zihao-Liu/lzh-rpc/Java%20CI%20with%20Maven">
-    <a href="https://www.codacy.com/manual/Zihao-Liu/lzh-rpc?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Zihao-Liu/lzh-rpc&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/cedd92ec80864e368a2c94e584d694cf"/></a>
 </p>
 
 
@@ -32,5 +39,3 @@ LZH-RPC 是一个用来学习RPC实现原理的项目。在实现RPC功能基础
 - 11、可视化服务：提供一些配置操作的可视化界面；
 
 详细规划可以查看[Projects看板](https://github.com/Zihao-Liu/lzh-rpc/projects)
-
-## More
