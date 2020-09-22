@@ -1,7 +1,6 @@
 package com.lzh.rpc.core.model.provider;
 
 import com.lzh.rpc.core.serialize.strategy.SerializeStrategy;
-import com.sun.istack.internal.NotNull;
 
 import java.util.Objects;
 
@@ -117,7 +116,6 @@ public class ProviderProperty {
         this.serialize = serialize;
     }
 
-    @NotNull
     public Boolean getEnable() {
         return Objects.isNull(enable) || enable;
     }
