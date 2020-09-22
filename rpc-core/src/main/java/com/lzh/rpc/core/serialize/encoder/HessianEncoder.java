@@ -17,7 +17,7 @@ public class HessianEncoder extends MessageToByteEncoder {
     }
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, Object obj, ByteBuf out) throws Exception {
+    protected void encode(ChannelHandlerContext ctx, Object obj, ByteBuf out) {
         //序列化
         if (genericClass.isInstance(obj)) {
             byte[] data = HessianSerializeUtil.serialize(obj);

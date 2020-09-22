@@ -1,10 +1,8 @@
 package com.lzh.rpc.core.provider.factory;
 
 import com.lzh.rpc.common.annotation.RpcProvider;
-import com.lzh.rpc.common.model.provider.ProviderProperty;
+import  com.lzh.rpc.core.model.provider.ProviderProperty;
 import com.lzh.rpc.core.log.LoggerAdapter;
-import com.lzh.rpc.core.provider.register.AbstractProviderRegister;
-import com.lzh.rpc.core.provider.server.NettyServer;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -15,10 +13,10 @@ import org.springframework.util.StopWatch;
 import java.net.UnknownHostException;
 import java.util.Map;
 
-import static com.lzh.rpc.common.constant.CommonConstant.BANNER_INFO;
-
 
 /**
+ * 支持以Spring的方式注册Rpc Provider Service
+ *
  * @author Liuzihao
  * @since 0.0.1
  */
@@ -26,8 +24,10 @@ public class RpcSpringProviderFactory extends BaseProviderFactory implements App
 
     private static final LoggerAdapter LOGGER = LoggerAdapter.getLogger(RpcSpringProviderFactory.class);
 
+    private ProviderProperty providerProperty;
+
     public RpcSpringProviderFactory(ProviderProperty providerProperty) {
-        BaseProviderFactory.setProviderProperty(providerProperty);
+        this.providerProperty = providerProperty;
     }
 
     /**
@@ -58,16 +58,16 @@ public class RpcSpringProviderFactory extends BaseProviderFactory implements App
 
     @Override
     public void afterPropertiesSet() throws UnknownHostException {
-        if (!BaseProviderFactory.isEmpty()) {
-            LOGGER.info("{}", BANNER_INFO);
-            BaseProviderFactory.setProviderProperty(providerProperty);
-        }
-        AbstractProviderRegister.getRegister(providerProperty).doRegister();
-        new NettyServer().startNetty();
+        super.start();
     }
 
     @Override
     public void destroy() throws UnknownHostException {
-        AbstractProviderRegister.getRegister(providerProperty).doDestroy();
+        super.stop();
+    }
+
+    @Override
+    ProviderProperty getProperty() {
+        return this.providerProperty;
     }
 }

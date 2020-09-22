@@ -1,6 +1,6 @@
 package com.lzh.rpc.demo.consumer.config;
 
-import com.lzh.rpc.common.model.consumer.ConsumerProperty;
+import com.lzh.rpc.core.model.consumer.ConsumerProperty;;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import org.springframework.stereotype.Component;

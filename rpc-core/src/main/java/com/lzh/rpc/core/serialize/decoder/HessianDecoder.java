@@ -19,7 +19,7 @@ public class HessianDecoder extends ByteToMessageDecoder {
     }
 
     @Override
-    public final void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+    public final void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) {
         if (in.readableBytes() < 4) {
             return;
         }

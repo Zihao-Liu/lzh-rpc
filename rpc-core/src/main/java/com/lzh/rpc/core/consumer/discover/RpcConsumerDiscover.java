@@ -1,6 +1,6 @@
 package com.lzh.rpc.core.consumer.discover;
 
-import com.lzh.rpc.common.model.consumer.ConsumerProperty;
+import com.lzh.rpc.core.model.consumer.ConsumerProperty;;
 
 import java.util.List;
 

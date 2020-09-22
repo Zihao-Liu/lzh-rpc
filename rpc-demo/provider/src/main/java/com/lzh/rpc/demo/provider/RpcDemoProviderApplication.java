@@ -1,6 +1,6 @@
 package com.lzh.rpc.demo.provider;
 
-import com.lzh.rpc.common.model.provider.ProviderProperty;
+import  com.lzh.rpc.core.model.provider.ProviderProperty;
 import com.lzh.rpc.core.provider.factory.BaseProviderFactory;
 import com.lzh.rpc.core.provider.factory.RpcSpringProviderFactory;
 import org.springframework.boot.SpringApplication;

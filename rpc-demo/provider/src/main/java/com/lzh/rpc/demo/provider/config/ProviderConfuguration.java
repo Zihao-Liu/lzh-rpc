@@ -1,6 +1,6 @@
 package com.lzh.rpc.demo.provider.config;
 
-import com.lzh.rpc.common.model.provider.ProviderProperty;
+import  com.lzh.rpc.core.model.provider.ProviderProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,5 +1,8 @@
-package com.lzh.rpc.common.model.consumer;
+package com.lzh.rpc.core.model.consumer;
 
+
+import com.lzh.rpc.core.consumer.balance.LoadBalanceStrategy;
+import com.lzh.rpc.core.serialize.strategy.SerializeStrategy;
 
 /**
  * Consumer基础配置
@@ -60,6 +63,10 @@ public class ConsumerProperty {
      * netty超时时间
      */
     private Integer timeout;
+
+    private Class<? extends SerializeStrategy> serializeClass;
+
+    private Class<? extends LoadBalanceStrategy> balanceClass;
 
     public String getRegistry() {
         return registry;
@@ -147,5 +154,21 @@ public class ConsumerProperty {
 
     public void setTimeout(Integer timeout) {
         this.timeout = timeout;
+    }
+
+    public Class<? extends SerializeStrategy> getSerializeClass() {
+        return serializeClass;
+    }
+
+    public void setSerializeClass(Class<? extends SerializeStrategy> serializeClass) {
+        this.serializeClass = serializeClass;
+    }
+
+    public Class<? extends LoadBalanceStrategy> getBalanceClass() {
+        return balanceClass;
+    }
+
+    public void setBalanceClass(Class<? extends LoadBalanceStrategy> balanceClass) {
+        this.balanceClass = balanceClass;
     }
 }

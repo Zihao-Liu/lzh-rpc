@@ -3,7 +3,6 @@ package com.lzh.rpc.core.consumer.net;
 import com.lzh.rpc.common.constant.CommonConstant;
 import com.lzh.rpc.common.constant.RpcErrorEnum;
 import com.lzh.rpc.common.exception.RpcException;
-import com.lzh.rpc.common.model.consumer.ConsumerProperty;
 import com.lzh.rpc.common.model.provider.ProviderInstance;
 import com.lzh.rpc.common.model.request.RpcRequest;
 import com.lzh.rpc.common.model.request.RpcRequestHeader;
@@ -11,8 +10,8 @@ import com.lzh.rpc.common.model.request.RpcResponse;
 import com.lzh.rpc.common.model.request.RpcTraceInfo;
 import com.lzh.rpc.core.consumer.balance.AbstractBalanceStrategy;
 import com.lzh.rpc.core.consumer.balance.LoadBalanceStrategy;
-import com.lzh.rpc.core.consumer.factory.BaseConsumerFactory;
 import com.lzh.rpc.core.log.LoggerAdapter;
+import com.lzh.rpc.core.model.consumer.ConsumerProperty;
 
 import java.io.Serializable;
 import java.lang.reflect.Proxy;
@@ -26,7 +25,7 @@ public class RpcConsumerLocalProxy {
     private static final LoggerAdapter LOGGER = LoggerAdapter.getLogger(RpcConsumerLocalProxy.class);
 
     @SuppressWarnings("unchecked")
-    public <T> T invoke(Class<?> interfaceClass, ConsumerProperty consumerProperty) {
+    public static <T> T invoke(Class<?> interfaceClass, ConsumerProperty consumerProperty) {
         String providerName = consumerProperty.getRegistry();
         return (T) Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class<?>[]{interfaceClass},
                 (proxy, method, args) -> {
@@ -44,7 +43,7 @@ public class RpcConsumerLocalProxy {
                             .setTraceInfo(traceInfo)
                             .setParams(args);
 
-                    ProviderInstance providerInstance = getRpcProviderInstance(providerName);
+                    ProviderInstance providerInstance = getRpcProviderInstance(consumerProperty);
                     LOGGER.info("send rpc request begin, provider: {}, instance: {}, request: {}", providerName, providerInstance, request);
                     RpcResponse<Serializable> response;
                     try {
@@ -63,10 +62,9 @@ public class RpcConsumerLocalProxy {
                 });
     }
 
-    private ProviderInstance getRpcProviderInstance(String providerName) {
-        String balance = BaseConsumerFactory.getBalance(providerName);
-        LoadBalanceStrategy strategy = AbstractBalanceStrategy.getStrategy(balance);
-        String address = strategy.parseAddress(providerName);
+    private static ProviderInstance getRpcProviderInstance(ConsumerProperty consumerProperty) throws Exception {
+        LoadBalanceStrategy strategy = AbstractBalanceStrategy.getStrategy(consumerProperty);
+        String address = strategy.parseAddress(consumerProperty.getRegistry());
         String[] hostAndPort = address.split(CommonConstant.IP_AND_PORT_SPLIT);
         ProviderInstance providerInstance = new ProviderInstance();
         providerInstance.setHost(hostAndPort[0]);

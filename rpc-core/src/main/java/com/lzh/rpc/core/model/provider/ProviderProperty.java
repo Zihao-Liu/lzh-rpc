@@ -1,4 +1,9 @@
-package com.lzh.rpc.common.model.provider;
+package com.lzh.rpc.core.model.provider;
+
+import com.lzh.rpc.core.serialize.strategy.SerializeStrategy;
+import com.sun.istack.internal.NotNull;
+
+import java.util.Objects;
 
 /**
  * RPC服务提供者所需要的基本信配置信息
@@ -9,6 +14,10 @@ package com.lzh.rpc.common.model.provider;
  */
 public class ProviderProperty {
 
+    /**
+     * 是否启动Server
+     */
+    private Boolean enable;
     /**
      * 服务提供者使用的注册方式
      */
@@ -41,6 +50,8 @@ public class ProviderProperty {
      * 序列化方式
      */
     private String serialize;
+
+    private Class<? extends SerializeStrategy> serializeClass;
 
     public String getRegister() {
         return register;
@@ -104,5 +115,22 @@ public class ProviderProperty {
 
     public void setSerialize(String serialize) {
         this.serialize = serialize;
+    }
+
+    @NotNull
+    public Boolean getEnable() {
+        return Objects.isNull(enable) || enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
+
+    public Class<? extends SerializeStrategy> getSerializeClass() {
+        return serializeClass;
+    }
+
+    public void setSerializeClass(Class<? extends SerializeStrategy> serializeClass) {
+        this.serializeClass = serializeClass;
     }
 }

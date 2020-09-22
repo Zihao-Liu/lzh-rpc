@@ -1,11 +1,9 @@
 package com.lzh.rpc.core.consumer.factory;
 
 import com.lzh.rpc.common.annotation.RpcConsumer;
-import com.lzh.rpc.common.model.consumer.ConsumerProperty;
-import com.lzh.rpc.core.consumer.discover.AbstractConsumerDiscover;
 import com.lzh.rpc.core.consumer.net.RpcConsumerLocalProxy;
 import com.lzh.rpc.core.log.LoggerAdapter;
-import org.apache.commons.collections4.CollectionUtils;
+import com.lzh.rpc.core.model.consumer.ConsumerProperty;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.DisposableBean;
@@ -22,14 +20,10 @@ public class RpcSpringConsumerFactory extends BaseConsumerFactory implements Ini
 
     private static final LoggerAdapter LOGGER = LoggerAdapter.getLogger(RpcSpringConsumerFactory.class);
 
-    private static RpcConsumerLocalProxy rpcConsumerLocalProxy;
+    private List<ConsumerProperty> consumerPropertyList;
 
-    static {
-        rpcConsumerLocalProxy = new RpcConsumerLocalProxy();
-    }
-
-    public RpcSpringConsumerFactory(List<ConsumerProperty> propertyList) {
-        BaseConsumerFactory.setConsumerPropertyList(propertyList);
+    public RpcSpringConsumerFactory(List<ConsumerProperty> consumerPropertyList) {
+        this.consumerPropertyList = consumerPropertyList;
     }
 
     @Override
@@ -46,7 +40,7 @@ public class RpcSpringConsumerFactory extends BaseConsumerFactory implements Ini
                         LOGGER.error("consumer property could not be null, reference [{}]", rpcConsumer.reference());
                         return false;
                     }
-                    field.set(bean, rpcConsumerLocalProxy.invoke(type, consumerProperty));
+                    field.set(bean, RpcConsumerLocalProxy.invoke(type, consumerProperty));
                 } catch (IllegalAccessException e) {
                     LOGGER.error("set consumer local proxy error, error:", e);
                     throw new BeanCreationException("set consumer local proxy error");
@@ -65,16 +59,16 @@ public class RpcSpringConsumerFactory extends BaseConsumerFactory implements Ini
 
     @Override
     public void afterPropertiesSet() {
-        List<ConsumerProperty> sourceList = consumerPropertyList;
-        if (CollectionUtils.isEmpty(sourceList)) {
-            return;
-        }
-        AbstractConsumerDiscover.discover(consumerPropertyList);
-        sourceList.forEach(source -> BaseConsumerFactory.setBalance(source.getRegistry(), source.getBalance()));
+        super.start();
     }
 
     @Override
     public void destroy() {
-        AbstractConsumerDiscover.destroy();
+        super.stop();
+    }
+
+    @Override
+    List<ConsumerProperty> listConsumerProperty() {
+        return this.consumerPropertyList;
     }
 }

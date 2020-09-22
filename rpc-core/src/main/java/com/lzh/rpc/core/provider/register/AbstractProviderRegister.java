@@ -1,7 +1,7 @@
 package com.lzh.rpc.core.provider.register;
 
 import com.lzh.rpc.common.exception.RpcException;
-import com.lzh.rpc.common.model.provider.ProviderProperty;
+import  com.lzh.rpc.core.model.provider.ProviderProperty;
 import com.lzh.rpc.core.constant.RegisterTypeEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

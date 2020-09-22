@@ -1,9 +1,9 @@
 package com.lzh.rpc.core.constant;
 
-import com.lzh.rpc.core.serialize.strategy.AbstractSerializeStrategy;
 import com.lzh.rpc.core.serialize.strategy.HessianSerializeStrategy;
 import com.lzh.rpc.core.serialize.strategy.KryoSerializeStrategy;
 import com.lzh.rpc.core.serialize.strategy.ProtoStuffSerializeStrategy;
+import com.lzh.rpc.core.serialize.strategy.SerializeStrategy;
 
 /**
  * @author Liuzihao
@@ -12,17 +12,19 @@ public enum SerializeStrategyEnum {
     /**
      * 序列化方案
      */
-    PROTO_STUFF("protostuff", ProtoStuffSerializeStrategy.init()),
-    HESSIAN("hessian", HessianSerializeStrategy.init()),
-    KRYO("kryo", KryoSerializeStrategy.init()),
+    PROTO_STUFF("protostuff", ProtoStuffSerializeStrategy.class),
+
+    HESSIAN("hessian", HessianSerializeStrategy.class),
+
+    KRYO("kryo", KryoSerializeStrategy.class),
     ;
 
     private String type;
-    private AbstractSerializeStrategy serializeStrategy;
+    private Class<? extends SerializeStrategy> serializeClass;
 
-    SerializeStrategyEnum(String type, AbstractSerializeStrategy serializeStrategy) {
+    SerializeStrategyEnum(String type, Class<? extends SerializeStrategy> serializeClass) {
         this.type = type;
-        this.serializeStrategy = serializeStrategy;
+        this.serializeClass = serializeClass;
     }
 
 
@@ -30,8 +32,8 @@ public enum SerializeStrategyEnum {
         return type;
     }
 
-    public AbstractSerializeStrategy getSerializeStrategy() {
-        return serializeStrategy;
+    public Class<? extends SerializeStrategy> getSerializeClass() {
+        return serializeClass;
     }
 
     public static SerializeStrategyEnum typeOf(String type) {

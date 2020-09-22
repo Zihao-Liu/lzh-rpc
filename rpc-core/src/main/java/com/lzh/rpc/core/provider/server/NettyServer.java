@@ -2,11 +2,10 @@ package com.lzh.rpc.core.provider.server;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.lzh.rpc.common.exception.RpcException;
-import com.lzh.rpc.common.model.provider.ProviderProperty;
 import com.lzh.rpc.common.model.request.RpcRequest;
 import com.lzh.rpc.common.model.request.RpcResponse;
 import com.lzh.rpc.core.log.LoggerAdapter;
-import com.lzh.rpc.core.provider.factory.BaseProviderFactory;
+import com.lzh.rpc.core.model.provider.ProviderProperty;
 import com.lzh.rpc.core.serialize.strategy.AbstractSerializeStrategy;
 import com.lzh.rpc.core.serialize.strategy.SerializeStrategy;
 import io.netty.bootstrap.ServerBootstrap;
@@ -38,8 +37,7 @@ public class NettyServer implements DisposableBean {
     private EventLoopGroup bossGroup;
     private EventLoopGroup workerGroup;
 
-    public void startNetty() throws RpcException {
-        ProviderProperty providerProperty = BaseProviderFactory.getProviderProperty();
+    public void startNetty(ProviderProperty providerProperty) {
         if (providerProperty.getPort() <= 0) {
             LOGGER.error("rpc server start error, caused by: [server port bind error], port: [{}]",
                     providerProperty.getPort());
@@ -72,13 +70,13 @@ public class NettyServer implements DisposableBean {
         }
     }
 
-    private ChannelInitializer<SocketChannel> getChannelInitializer(ProviderProperty property) {
-        SerializeStrategy serializeStrategy = AbstractSerializeStrategy.getStrategy(property.getSerialize());
+    private ChannelInitializer<SocketChannel> getChannelInitializer(ProviderProperty property) throws Exception {
+        SerializeStrategy serializeStrategy = AbstractSerializeStrategy.getStrategy(property);
         return new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel socketChannel) {
                 socketChannel.pipeline()
-                        .addLast(new IdleStateHandler(0, 0, HEART_BEAT_INTERVAL * 3, TimeUnit.SECONDS))
+                        .addLast(new IdleStateHandler(0, 0, HEART_BEAT_INTERVAL * 3L, TimeUnit.SECONDS))
                         .addLast(serializeStrategy.getDecoder(RpcRequest.class))
                         .addLast(serializeStrategy.getEncoder(RpcResponse.class))
                         .addLast(new ServerHandler());

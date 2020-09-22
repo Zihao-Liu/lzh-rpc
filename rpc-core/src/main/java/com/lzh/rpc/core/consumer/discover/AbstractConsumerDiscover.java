@@ -3,7 +3,7 @@ package com.lzh.rpc.core.consumer.discover;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.lzh.rpc.common.exception.RpcException;
-import com.lzh.rpc.common.model.consumer.ConsumerProperty;
+import com.lzh.rpc.core.model.consumer.ConsumerProperty;;
 import com.lzh.rpc.core.constant.RegisterTypeEnum;
 import com.lzh.rpc.core.log.LoggerAdapter;
 import org.apache.commons.lang3.StringUtils;

@@ -3,10 +3,10 @@ package com.lzh.rpc.core.consumer.net;
 import com.google.common.collect.Maps;
 import com.lzh.rpc.common.constant.RpcErrorEnum;
 import com.lzh.rpc.common.exception.RpcException;
-import com.lzh.rpc.common.model.consumer.ConsumerProperty;
 import com.lzh.rpc.common.model.provider.ProviderInstance;
 import com.lzh.rpc.common.model.request.RpcRequest;
 import com.lzh.rpc.common.model.request.RpcResponse;
+import com.lzh.rpc.core.model.consumer.ConsumerProperty;
 import com.lzh.rpc.core.serialize.strategy.AbstractSerializeStrategy;
 import com.lzh.rpc.core.serialize.strategy.SerializeStrategy;
 import io.netty.bootstrap.Bootstrap;
@@ -25,6 +25,8 @@ import java.util.concurrent.TimeUnit;
 
 import static com.lzh.rpc.common.constant.CommonConstant.HEART_BEAT_ID;
 import static com.lzh.rpc.common.constant.CommonConstant.HEART_BEAT_INTERVAL;
+
+;
 
 
 /**
@@ -71,8 +73,8 @@ public class RpcConsumerNettyClient extends SimpleChannelInboundHandler<RpcRespo
         }
     }
 
-    private ChannelInitializer<SocketChannel> getSocketChannel(ConsumerProperty consumerProperty) {
-        SerializeStrategy serializeStrategy = AbstractSerializeStrategy.getStrategy(consumerProperty.getSerialize());
+    private ChannelInitializer<SocketChannel> getSocketChannel(ConsumerProperty consumerProperty) throws Exception {
+        SerializeStrategy serializeStrategy = AbstractSerializeStrategy.getStrategy(consumerProperty);
         return new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel socketChannel) {

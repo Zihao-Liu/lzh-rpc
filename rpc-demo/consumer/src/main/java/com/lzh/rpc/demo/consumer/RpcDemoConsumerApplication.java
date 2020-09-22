@@ -20,7 +20,7 @@ public class RpcDemoConsumerApplication {
     private ConsumerConfiguration consumerConfiguration;
 
     @Bean
-    public BaseConsumerFactory providerFactory() {
+    public BaseConsumerFactory consumerFactory() {
         return new RpcSpringConsumerFactory(consumerConfiguration.getConsumers());
     }
 }

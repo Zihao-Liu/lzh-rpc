@@ -2,6 +2,7 @@ package com.lzh.rpc.core.provider.server;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.lzh.rpc.common.exception.RpcException;
+import  com.lzh.rpc.core.model.provider.ProviderProperty;
 import com.lzh.rpc.common.model.request.RpcEmptyResult;
 import com.lzh.rpc.common.model.request.RpcRequest;
 import com.lzh.rpc.common.model.request.RpcResponse;
