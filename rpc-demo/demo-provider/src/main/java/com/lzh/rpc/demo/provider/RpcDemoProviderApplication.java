@@ -14,7 +14,6 @@ import javax.annotation.Resource;
  * @author Liuzihao
  */
 @SpringBootApplication(scanBasePackages = {"com.lzh"})
-@EnableRpcStarter
 public class RpcDemoProviderApplication {
 
     public static void main(String[] args) {
