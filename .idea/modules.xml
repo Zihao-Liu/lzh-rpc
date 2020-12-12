@@ -3,12 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/lzh-rpc.iml" filepath="$PROJECT_DIR$/.idea/lzh-rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rpc-starter/lzh-rpc-spring-boot-starter.iml" filepath="$PROJECT_DIR$/rpc-starter/lzh-rpc-spring-boot-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rpc-center/rpc-center.iml" filepath="$PROJECT_DIR$/rpc-center/rpc-center.iml" />
       <module fileurl="file://$PROJECT_DIR$/rpc-common/rpc-common.iml" filepath="$PROJECT_DIR$/rpc-common/rpc-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/rpc-core/rpc-core.iml" filepath="$PROJECT_DIR$/rpc-core/rpc-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/rpc-demo/rpc-demo.iml" filepath="$PROJECT_DIR$/rpc-demo/rpc-demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rpc-demo/consumer/rpc-demo-consumer.iml" filepath="$PROJECT_DIR$/rpc-demo/consumer/rpc-demo-consumer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rpc-demo/facade/rpc-demo-facade.iml" filepath="$PROJECT_DIR$/rpc-demo/facade/rpc-demo-facade.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rpc-demo/provider/rpc-demo-provider.iml" filepath="$PROJECT_DIR$/rpc-demo/provider/rpc-demo-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rpc-demo/demo-consumer/rpc-demo-consumer.iml" filepath="$PROJECT_DIR$/rpc-demo/demo-consumer/rpc-demo-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rpc-demo/demo-facade/rpc-demo-facade.iml" filepath="$PROJECT_DIR$/rpc-demo/demo-facade/rpc-demo-facade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rpc-demo/demo-provider/rpc-demo-provider.iml" filepath="$PROJECT_DIR$/rpc-demo/demo-provider/rpc-demo-provider.iml" />
     </modules>
   </component>
 </project>

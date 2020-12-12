@@ -1,13 +1,14 @@
 package com.lzh.rpc.common.model.request;
 
 
-import com.lzh.rpc.common.constant.RpcErrorEnum;
-import com.lzh.rpc.common.exception.RpcException;
+import static com.lzh.rpc.common.constant.CommonConstant.HEART_BEAT_ID;
+import static com.lzh.rpc.common.constant.RpcErrorEnum.ERROR;
+import static com.lzh.rpc.common.constant.RpcErrorEnum.SUCCESS;
 
 import java.io.Serializable;
 
-import static com.lzh.rpc.common.constant.RpcErrorEnum.ERROR;
-import static com.lzh.rpc.common.constant.RpcErrorEnum.SUCCESS;
+import com.lzh.rpc.common.constant.RpcErrorEnum;
+import com.lzh.rpc.common.exception.RpcException;
 
 /**
  * @author Liuzihao
@@ -80,12 +81,14 @@ public class RpcResponse<T extends Serializable> implements Serializable {
     }
 
     public static RpcResponse<RpcEmptyResult> error(RpcException exception) {
-        return new RpcResponse<RpcEmptyResult>().setError(exception).setCode(exception.getCode()).setMsg(exception.getMsg());
+        return new RpcResponse<RpcEmptyResult>().setError(exception).setCode(exception.getCode())
+                .setMsg(exception.getMsg());
     }
 
 
     public static RpcResponse<RpcEmptyResult> error(Exception exception) {
-        return new RpcResponse<RpcEmptyResult>().setError(exception).setCode(ERROR.getCode()).setMsg(exception.getMessage());
+        return new RpcResponse<RpcEmptyResult>().setError(exception).setCode(ERROR.getCode())
+                .setMsg(exception.getMessage());
     }
 
     public static RpcResponse<RpcEmptyResult> error(RpcErrorEnum errorNoEnum) {
@@ -96,6 +99,13 @@ public class RpcResponse<T extends Serializable> implements Serializable {
 
     public static <T extends Serializable> RpcResponse<T> success(T result) {
         return new RpcResponse<T>().setResult(result).setCode(SUCCESS.getCode());
+    }
+
+    public static RpcResponse<RpcEmptyResult> hearBeat() {
+        RpcTraceInfo traceInfo = RpcTraceInfo.newTrace(HEART_BEAT_ID);
+        RpcResponse<RpcEmptyResult> response = success(new RpcEmptyResult());
+        response.setTraceInfo(traceInfo);
+        return response;
     }
 
 

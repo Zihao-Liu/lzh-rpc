@@ -6,23 +6,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rpc-demo" />
         <module name="rpc-provider-demo" />
         <module name="rpc-common" />
+        <module name="lzh-rpc-spring-boot-starter" />
         <module name="rpc-core" />
         <module name="rpc-demo-facade" />
         <module name="rpc-demo-provider" />
+        <module name="rpc-center" />
         <module name="rpc-demo-consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="lzh-rpc" target="1.8" />
+      <module name="lzh-rpc-spring-boot-starter" target="1.8" />
+      <module name="rpc-center" target="1.8" />
       <module name="rpc-common" target="1.8" />
       <module name="rpc-core" target="1.8" />
-      <module name="rpc-demo" target="1.5" />
-      <module name="rpc-demo-consumer" target="1.5" />
-      <module name="rpc-demo-facade" target="1.5" />
-      <module name="rpc-demo-provider" target="1.5" />
+      <module name="rpc-demo" target="1.8" />
+      <module name="rpc-demo-consumer" target="1.8" />
+      <module name="rpc-demo-facade" target="1.8" />
+      <module name="rpc-demo-provider" target="1.8" />
       <module name="rpc-provider-demo" target="1.8" />
     </bytecodeTargetLevel>
   </component>

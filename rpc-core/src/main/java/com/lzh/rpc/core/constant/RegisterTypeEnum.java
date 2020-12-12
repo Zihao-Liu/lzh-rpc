@@ -1,40 +1,44 @@
 package com.lzh.rpc.core.constant;
 
-import com.lzh.rpc.core.consumer.discover.DirectConsumerDiscover;
-import com.lzh.rpc.core.consumer.discover.RpcConsumerDiscover;
-import com.lzh.rpc.core.provider.register.DirectProviderRegister;
-import com.lzh.rpc.core.provider.register.RpcProviderRegister;
+import com.lzh.rpc.core.client.discover.DirectClientDiscover;
+import com.lzh.rpc.core.client.discover.HttpClientDiscover;
+import com.lzh.rpc.core.client.discover.RpcClientDiscover;
+import com.lzh.rpc.core.server.register.DirectServerRegister;
+import com.lzh.rpc.core.server.register.HttpServerRegister;
+import com.lzh.rpc.core.server.register.RpcServerRegister;
 
 /**
  * @author Liuzihao
+ * @since 0.0.1
  */
 public enum RegisterTypeEnum {
     /**
      * 服务发现方式
      */
-    DIRECT("direct", DirectProviderRegister.init(), DirectConsumerDiscover.init()),
+    DIRECT("direct", DirectServerRegister.getInstance(), DirectClientDiscover.getInstance()),
+    HTTP("http", HttpServerRegister.getInstance(), HttpClientDiscover.getInstance()),
     ;
 
-    private String type;
-    private RpcProviderRegister providerRegister;
-    private RpcConsumerDiscover consumerDiscover;
+    private final String type;
+    private final RpcServerRegister register;
+    private final RpcClientDiscover discover;
 
-    RegisterTypeEnum(String type, RpcProviderRegister providerRegister, RpcConsumerDiscover consumerDiscover) {
+    RegisterTypeEnum(String type, RpcServerRegister register, RpcClientDiscover clientDiscover) {
         this.type = type;
-        this.providerRegister = providerRegister;
-        this.consumerDiscover = consumerDiscover;
+        this.register = register;
+        this.discover = clientDiscover;
     }
 
     public String getType() {
         return type;
     }
 
-    public RpcProviderRegister getProviderRegister() {
-        return providerRegister;
+    public RpcServerRegister getRegister() {
+        return register;
     }
 
-    public RpcConsumerDiscover getConsumerDiscover() {
-        return consumerDiscover;
+    public RpcClientDiscover getDiscover() {
+        return discover;
     }
 
     public static RegisterTypeEnum typeOf(String type) {

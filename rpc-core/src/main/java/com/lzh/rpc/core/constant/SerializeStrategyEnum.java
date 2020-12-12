@@ -7,20 +7,21 @@ import com.lzh.rpc.core.serialize.strategy.SerializeStrategy;
 
 /**
  * @author Liuzihao
+ * @since 0.0.1
  */
 public enum SerializeStrategyEnum {
     /**
      * 序列化方案
      */
-    PROTO_STUFF("protostuff", ProtoStuffSerializeStrategy.class),
+    PROTO_STUFF("proto_stuff", ProtoStuffSerializeStrategy.class),
 
     HESSIAN("hessian", HessianSerializeStrategy.class),
 
     KRYO("kryo", KryoSerializeStrategy.class),
     ;
 
-    private String type;
-    private Class<? extends SerializeStrategy> serializeClass;
+    private final String type;
+    private final Class<? extends SerializeStrategy> serializeClass;
 
     SerializeStrategyEnum(String type, Class<? extends SerializeStrategy> serializeClass) {
         this.type = type;

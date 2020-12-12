@@ -1,6 +1,6 @@
 package com.lzh.rpc.common.util;
 
-import com.lzh.rpc.common.model.provider.ProviderInstance;
+import com.lzh.rpc.common.model.server.ProviderInstance;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

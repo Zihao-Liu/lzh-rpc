@@ -39,8 +39,8 @@ public class RpcException extends RuntimeException {
         this.msg = msg;
     }
 
-    public static RpcException error(String msg) {
-        return new RpcException(RpcErrorEnum.ERROR.getCode(), msg);
+    public static RpcException error(String msg, Object... extend) {
+        return new RpcException(RpcErrorEnum.ERROR.getCode(), String.format(msg, extend));
     }
 
     public static RpcException error() {

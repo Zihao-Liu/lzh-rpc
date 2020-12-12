@@ -8,8 +8,8 @@ import io.netty.handler.codec.MessageToByteEncoder;
  * {@link HessianSerializeStrategy}策略。
  * <p>
  * 使用时的配置方式：{@link com.lzh.rpc.core.constant.SerializeStrategyEnum}
- * 1. Provider通过配置{@link com.lzh.rpc.common.model.provider.ProviderProperty}中的serialize字段进行配置。
- * 2. Consumer通过配置{@link com.lzh.rpc.common.model.consumer.ConsumerProperty}中的serialize字段进行配置。
+ * 1. Provider通过配置{@link com.lzh.rpc.common.model.server.ProviderInstance}中的serialize字段进行配置。
+ * 2. Consumer通过配置{@link com.lzh.rpc.common.model.client.ClientInvokeInfo}中的serialize字段进行配置。
  * <p>
  * 对于Consumer来说，调用不同的Provider可以使用不同的序列化策略。
  * <p>

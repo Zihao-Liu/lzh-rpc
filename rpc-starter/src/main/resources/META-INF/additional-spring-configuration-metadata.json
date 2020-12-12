@@ -1,0 +1,35 @@
+{
+  "groups": [
+    {
+      "name": "rpc-server",
+      "type": "com.lzh.rpc.core.model.server.ServerProperty",
+      "sourceType": "com.lzh.rpc.core.model.server.ServerProperty"
+    }
+  ],
+  "properties": [
+    {
+      "name": "rpc-server.register",
+      "type": "java.lang.String",
+      "sourceType": "com.lzh.rpc.core.model.server.ServerProperty",
+      "description": "服务注册方式."
+    }
+  ],
+  "hints": [
+    {
+      "name": "rpc-server.register",
+      "values": [
+        {
+          "value": "http"
+        },
+        {
+          "value": "direct"
+        }
+      ],
+      "providers": [
+        {
+          "name": "any"
+        }
+      ]
+    }
+  ]
+}

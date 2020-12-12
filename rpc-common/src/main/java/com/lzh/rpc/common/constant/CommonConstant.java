@@ -25,7 +25,7 @@ public final class CommonConstant {
     public static final String DEFAULT_REGISTER_SUFFIX = "/register";
     public static final String DEFAULT_AUTH_SUFFIX = "/auth";
     public static final String DEFAULT_DESTROY_SUFFIX = "/destroy";
-    public static final String DEFAULT_DISCOVER_SUFFIX = "/discover?appName={appName}";
+    public static final String DEFAULT_DISCOVER_SUFFIX = "/discover?appName=%s";
 
 
     public static final String IP_AND_PORT_SPLIT = ":";
